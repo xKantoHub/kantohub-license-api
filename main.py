@@ -8,7 +8,7 @@ API_SECRET = os.getenv("API_SECRET", "kantohub_super_secret_key_6919601061")
 
 MONGO_URI = os.getenv(
     "MONGO_URI",
-    "mongodb+srv://kantohub:SUemxBr7P9LuMaZ@cluster0.xxxx.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://kantohub:SUemxBr7P9LuMaZ@cluster0.ymqrtsw.mongodb.net/?appName=Cluster0"
 )
 
 client = MongoClient(MONGO_URI)
@@ -163,3 +163,4 @@ async def all_keys(authorization: str = Header(None)):
             })
 
     return {"keys": keys}
+
