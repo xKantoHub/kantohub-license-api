@@ -15,7 +15,7 @@ DURATION_MAP = {
     "permanent": None
 }
 
-# ---------------- UTILITIES ----------------
+# ---------- UTILITIES ----------
 def load_keys():
     if not os.path.exists(KEY_FILE):
         return []
@@ -23,7 +23,7 @@ def load_keys():
         return json.load(f)
 
 def save_keys(data):
-    os.makedirs(os.path.dirname(KEY_FILE), exist_ok=True)
+    os.makedirs("/data", exist_ok=True)
     with open(KEY_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4)
 
@@ -35,12 +35,11 @@ def is_expired(k):
 def cleanup_expired(keys):
     return [k for k in keys if not is_expired(k)]
 
-# ---------------- ROUTES ----------------
+# ---------- ROUTES ----------
 @app.get("/")
 def root():
-    return {"status": "License API Online"}
+    return {"status": "KantoHub License API Online"}
 
-# -------- ADD KEY --------
 @app.post("/api/add-key")
 async def add_key(req: Request, authorization: str = Header(None)):
     if authorization != API_SECRET:
@@ -67,7 +66,6 @@ async def add_key(req: Request, authorization: str = Header(None)):
     save_keys(keys)
     return {"success": True}
 
-# -------- VERIFY KEY --------
 @app.post("/api/verify")
 async def verify(req: Request):
     body = await req.json()
@@ -99,7 +97,6 @@ async def verify(req: Request):
 
     return {"success": False, "reason": "invalid_key"}
 
-# -------- CHECK KEY --------
 @app.post("/api/check-key")
 async def check_key(req: Request):
     body = await req.json()
