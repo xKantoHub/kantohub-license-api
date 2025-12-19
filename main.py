@@ -4,8 +4,10 @@ import json, os
 from datetime import datetime, timedelta
 
 API_SECRET = os.getenv("API_SECRET", "kantohub_super_secret_key_6919601061")
-DATA_DIR = "/data"
-KEY_FILE = f"{DATA_DIR}/keys.json"
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+KEY_FILE = os.path.join(DATA_DIR, "keys.json")
 
 app = FastAPI()
 
@@ -47,27 +49,29 @@ def is_expired(k):
 def cleanup(keys):
     return [k for k in keys if not is_expired(k)]
 
-@app.get("/")
-def root():
-    return {"status": "KantoHub License API Online"}
-
 @app.post("/api/add-key")
 async def add_key(req: Request, authorization: str = Header(None)):
     if not authorized(authorization):
         return JSONResponse({"error": "unauthorized"}, status_code=403)
 
     data = await req.json()
-    duration = data.get("duration", "permanent")
 
+    duration = data.get("duration", "permanent")
     expires_at = None
+
     if DURATION_MAP.get(duration):
         expires_at = (datetime.utcnow() + DURATION_MAP[duration]).isoformat()
 
     keys = cleanup(load_keys())
 
     keys.append({
-        **data,
+        "placeid": str(data.get("placeid")), 
+        "key": data.get("key"),
+        "server_name": data.get("server_name"),
         "duration": duration,
+        "assigned_to": data.get("assigned_to"),
+        "generated_by": data.get("generated_by"),
+        "timestamp_utc": data.get("timestamp_utc"),
         "expires_at": expires_at,
         "used": False,
         "used_placeid": None,
@@ -81,7 +85,7 @@ async def add_key(req: Request, authorization: str = Header(None)):
 async def verify(req: Request):
     body = await req.json()
     key = body.get("key")
-    placeid = str(body.get("placeId"))
+    placeid = str(body.get("placeid")) 
 
     keys = cleanup(load_keys())
 
