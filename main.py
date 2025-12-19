@@ -4,7 +4,8 @@ import json, os
 from datetime import datetime, timedelta
 
 API_SECRET = os.getenv("API_SECRET", "kantohub_super_secret_key_6919601061")
-KEY_FILE = "/data/keys.json"
+DATA_DIR = "/data"
+KEY_FILE = f"{DATA_DIR}/keys.json"
 
 app = FastAPI()
 
@@ -15,14 +16,26 @@ DURATION_MAP = {
     "permanent": None
 }
 
-def load_keys():
+def authorized(auth: str):
+    if not auth:
+        return False
+    if auth.startswith("Bearer "):
+        auth = auth.replace("Bearer ", "")
+    return auth == API_SECRET
+
+def ensure_file():
+    os.makedirs(DATA_DIR, exist_ok=True)
     if not os.path.exists(KEY_FILE):
-        return []
+        with open(KEY_FILE, "w", encoding="utf-8") as f:
+            json.dump([], f)
+
+def load_keys():
+    ensure_file()
     with open(KEY_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
 def save_keys(keys):
-    os.makedirs("/data", exist_ok=True)
+    ensure_file()
     with open(KEY_FILE, "w", encoding="utf-8") as f:
         json.dump(keys, f, indent=4)
 
@@ -31,15 +44,12 @@ def is_expired(k):
         return False
     return datetime.utcnow() > datetime.fromisoformat(k["expires_at"])
 
-def cleanup_expired(keys):
+def cleanup(keys):
     return [k for k in keys if not is_expired(k)]
-
-def authorized(auth):
-    return auth == API_SECRET
 
 @app.get("/")
 def root():
-    return {"status": "KantoHub License API Online XD Weirdogz"}
+    return {"status": "KantoHub License API Online"}
 
 @app.post("/api/add-key")
 async def add_key(req: Request, authorization: str = Header(None)):
@@ -53,7 +63,7 @@ async def add_key(req: Request, authorization: str = Header(None)):
     if DURATION_MAP.get(duration):
         expires_at = (datetime.utcnow() + DURATION_MAP[duration]).isoformat()
 
-    keys = cleanup_expired(load_keys())
+    keys = cleanup(load_keys())
 
     keys.append({
         **data,
@@ -73,12 +83,12 @@ async def verify(req: Request):
     key = body.get("key")
     placeid = str(body.get("placeId"))
 
-    keys = cleanup_expired(load_keys())
+    keys = cleanup(load_keys())
 
     for k in keys:
         if k["key"] == key:
             if is_expired(k):
-                save_keys(cleanup_expired(keys))
+                save_keys(cleanup(keys))
                 return {"success": False, "reason": "expired"}
 
             if k["placeid"] != placeid:
@@ -103,7 +113,7 @@ async def check_key(req: Request):
     body = await req.json()
     discord_id = body.get("discord_id")
 
-    keys = cleanup_expired(load_keys())
+    keys = cleanup(load_keys())
     save_keys(keys)
 
     return {
@@ -112,6 +122,7 @@ async def check_key(req: Request):
             if k.get("assigned_to", {}).get("id") == discord_id
         ]
     }
+
 @app.post("/api/delete-key")
 async def delete_key(req: Request, authorization: str = Header(None)):
     if not authorized(authorization):
