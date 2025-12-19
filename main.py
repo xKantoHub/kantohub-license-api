@@ -38,7 +38,7 @@ def cleanup_expired(keys):
 # ---------- ROUTES ----------
 @app.get("/")
 def root():
-    return {"status": "KantoHub License API Online"}
+    return {"status": "KantoHub License API Online XD XD"}
 
 @app.post("/api/add-key")
 async def add_key(req: Request, authorization: str = Header(None)):
@@ -111,3 +111,19 @@ async def check_key(req: Request):
             if k["assigned_to"]["id"] == discord_id
         ]
     }
+@app.post("/api/delete-key")
+async def delete_key(req: Request, authorization: str = Header(None)):
+    if authorization != API_SECRET:
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    body = await req.json()
+    target = body.get("key")
+
+    keys = load_keys()
+    new_keys = [k for k in keys if k["key"] != target]
+
+    if len(new_keys) == len(keys):
+        return {"success": False, "reason": "not_found"}
+
+    save_keys(new_keys)
+    return {"success": True}
