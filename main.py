@@ -18,6 +18,8 @@ DURATION_MAP = {
     "permanent": None
 }
 
+# ================= UTILS =================
+
 def authorized(auth: str):
     if not auth:
         return False
@@ -49,23 +51,29 @@ def is_expired(k):
 def cleanup(keys):
     return [k for k in keys if not is_expired(k)]
 
+# ================= ROUTES =================
+
+@app.get("/")
+def root():
+    return {"status": "KantoHub License API Online"}
+
 @app.post("/api/add-key")
 async def add_key(req: Request, authorization: str = Header(None)):
     if not authorized(authorization):
         return JSONResponse({"error": "unauthorized"}, status_code=403)
 
     data = await req.json()
-
     duration = data.get("duration", "permanent")
-    expires_at = None
 
+    expires_at = None
     if DURATION_MAP.get(duration):
         expires_at = (datetime.utcnow() + DURATION_MAP[duration]).isoformat()
 
     keys = cleanup(load_keys())
 
     keys.append({
-        "placeid": str(data.get("placeid")), 
+        "system_name": data.get("system_name"),
+        "placeid": str(data.get("placeid")),
         "key": data.get("key"),
         "server_name": data.get("server_name"),
         "duration": duration,
@@ -85,7 +93,7 @@ async def add_key(req: Request, authorization: str = Header(None)):
 async def verify(req: Request):
     body = await req.json()
     key = body.get("key")
-    placeid = str(body.get("placeid")) 
+    placeid = str(body.get("placeid"))
 
     keys = cleanup(load_keys())
 
@@ -142,4 +150,13 @@ async def delete_key(req: Request, authorization: str = Header(None)):
         return JSONResponse({"error": "key_not_found"}, status_code=404)
 
     save_keys(new_keys)
-    return {"success": True, "revoked": target}
+    return {"success": True}
+
+@app.post("/api/all-keys")
+async def all_keys(authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    keys = cleanup(load_keys())
+    save_keys(keys)
+    return {"keys": keys}
