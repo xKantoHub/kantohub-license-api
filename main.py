@@ -55,31 +55,36 @@ def cleanup(keys):
 
 @app.get("/")
 def root():
-    return {"status": "KantoHub License API Online"}
+    return {"status": "KantoHub License API Online XD"}
 
 @app.post("/api/add-key")
 async def add_key(req: Request, authorization: str = Header(None)):
     if not authorized(authorization):
         return JSONResponse({"error": "unauthorized"}, status_code=403)
-
     data = await req.json()
-    duration = data.get("duration", "permanent")
+    if not data.get("system_name"):
+        return JSONResponse(
+            {"error": "system_name is required"},
+            status_code=400
+        )
 
+    duration = data.get("duration", "permanent")
     expires_at = None
+
     if DURATION_MAP.get(duration):
         expires_at = (datetime.utcnow() + DURATION_MAP[duration]).isoformat()
 
     keys = cleanup(load_keys())
 
     keys.append({
-        "system_name": data.get("system_name"),
-        "placeid": str(data.get("placeid")),
-        "key": data.get("key"),
-        "server_name": data.get("server_name"),
+        "system_name": data["system_name"], 
+        "placeid": str(data["placeid"]),
+        "key": data["key"],
+        "server_name": data["server_name"],
         "duration": duration,
-        "assigned_to": data.get("assigned_to"),
-        "generated_by": data.get("generated_by"),
-        "timestamp_utc": data.get("timestamp_utc"),
+        "assigned_to": data["assigned_to"],
+        "generated_by": data["generated_by"],
+        "timestamp_utc": data["timestamp_utc"],
         "expires_at": expires_at,
         "used": False,
         "used_placeid": None,
@@ -88,6 +93,7 @@ async def add_key(req: Request, authorization: str = Header(None)):
 
     save_keys(keys)
     return {"success": True}
+
 
 @app.post("/api/verify")
 async def verify(req: Request):
@@ -160,3 +166,4 @@ async def all_keys(authorization: str = Header(None)):
     keys = cleanup(load_keys())
     save_keys(keys)
     return {"keys": keys}
+
