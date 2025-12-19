@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 import json, os
 from datetime import datetime, timedelta
 
-API_SECRET = os.getenv("API_SECRET")
+API_SECRET = os.getenv("API_SECRET", "kantohub_super_secret_key_6919601061")
 KEY_FILE = "/data/keys.json"
 
 app = FastAPI()
@@ -15,17 +15,16 @@ DURATION_MAP = {
     "permanent": None
 }
 
-# ---------- UTILITIES ----------
 def load_keys():
     if not os.path.exists(KEY_FILE):
         return []
     with open(KEY_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def save_keys(data):
+def save_keys(keys):
     os.makedirs("/data", exist_ok=True)
     with open(KEY_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4)
+        json.dump(keys, f, indent=4)
 
 def is_expired(k):
     if k["expires_at"] is None:
@@ -35,14 +34,16 @@ def is_expired(k):
 def cleanup_expired(keys):
     return [k for k in keys if not is_expired(k)]
 
-# ---------- ROUTES ----------
+def authorized(auth):
+    return auth == API_SECRET
+
 @app.get("/")
 def root():
-    return {"status": "KantoHub License API Online XD XD"}
+    return {"status": "KantoHub License API Online XD Weirdogz"}
 
 @app.post("/api/add-key")
 async def add_key(req: Request, authorization: str = Header(None)):
-    if authorization != API_SECRET:
+    if not authorized(authorization):
         return JSONResponse({"error": "unauthorized"}, status_code=403)
 
     data = await req.json()
@@ -93,7 +94,7 @@ async def verify(req: Request):
             if k["used_placeid"] == placeid:
                 return {"success": True}
 
-            return {"success": False, "reason": "key_used_elsewhere"}
+            return {"success": False, "reason": "used_elsewhere"}
 
     return {"success": False, "reason": "invalid_key"}
 
@@ -108,12 +109,12 @@ async def check_key(req: Request):
     return {
         "keys": [
             k for k in keys
-            if k["assigned_to"]["id"] == discord_id
+            if k.get("assigned_to", {}).get("id") == discord_id
         ]
     }
 @app.post("/api/delete-key")
 async def delete_key(req: Request, authorization: str = Header(None)):
-    if authorization != API_SECRET:
+    if not authorized(authorization):
         return JSONResponse({"error": "unauthorized"}, status_code=403)
 
     body = await req.json()
@@ -122,8 +123,8 @@ async def delete_key(req: Request, authorization: str = Header(None)):
     keys = load_keys()
     new_keys = [k for k in keys if k["key"] != target]
 
-    if len(new_keys) == len(keys):
-        return {"success": False, "reason": "not_found"}
+    if len(keys) == len(new_keys):
+        return JSONResponse({"error": "key_not_found"}, status_code=404)
 
     save_keys(new_keys)
-    return {"success": True}
+    return {"success": True, "revoked": target}
